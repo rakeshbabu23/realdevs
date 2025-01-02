@@ -16,22 +16,20 @@ const customSignUp = async (req, res) => {
     logger.info("Generated tokens for new user");
     res.cookie("userId", user._id, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "None",
+      secure: true,
       maxAge: cookiesExpiryDate,
       path: "/",
     });
     res.cookie("access", accessToken, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "None",
       maxAge: cookiesExpiryDate,
       path: "/",
     });
     res.cookie("refresh", refreshToken, {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      secure: true,
       maxAge: cookiesExpiryDate,
       path: "/",
     });
@@ -102,20 +100,20 @@ const customLogin = async (req, res) => {
     const { accessToken, refreshToken } =
       await tokenService.createAccessTokenAndRefreshToken(user._id);
     res.cookie("userId", user._id, {
-      sameSite: "Lax",
-      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
+      secure: true,
       maxAge: cookiesExpiryDate,
       httpOnly: true,
     });
     res.cookie("access", accessToken, {
-      sameSite: "Lax",
-      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
+      secure: true,
       maxAge: cookiesExpiryDate,
       httpOnly: true,
     });
     res.cookie("refresh", refreshToken, {
-      sameSite: "Lax",
-      secure: process.env.NODE_ENV === "production",
+      sameSite: "None",
+      secure: true,
       maxAge: cookiesExpiryDate,
       httpOnly: true,
     });
