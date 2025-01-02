@@ -117,6 +117,7 @@ const customLogin = async (req, res) => {
       maxAge: cookiesExpiryDate,
       httpOnly: true,
     });
+    res.setHeader("Access-Control-Allow-Credentials", "true");
     res.status(201).json({ message: "User logged in successfully" });
   } catch (error) {
     if (error.status && error.message) {
