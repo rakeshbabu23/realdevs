@@ -24,6 +24,9 @@ function Topbar() {
           dispatch(setGroups(response.data.groups));
         }
       } catch (error) {
+        if (error.status === 401) {
+          window.location.href = "/";
+        }
         toast.error(error.response.data.error);
       }
     };
@@ -45,6 +48,9 @@ function Topbar() {
         dispatch(addNewGroup(response.data.group));
       }
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       toast.error(error.response.data.errors || error.response.data.error);
       setIsLoading(false);
     }
@@ -57,6 +63,9 @@ function Topbar() {
           dispatch(setUserReceiverProjects(response.data.portfolios));
         }
       } catch (error) {
+        if (error.status === 401) {
+          window.location.href = "/";
+        }
         toast.error(error.response.data.errors || error.response.data.error);
       }
     };

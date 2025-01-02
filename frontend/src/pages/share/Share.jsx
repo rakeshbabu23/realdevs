@@ -24,6 +24,9 @@ function Share() {
         const response = await api.get(`/group/user`);
         dispatch(setUserSubmittedProjects(response.data.portfolios));
       } catch (error) {
+        if (error.status === 401) {
+          window.location.href = "/";
+        }
         toast.error(error.response.data.error);
       }
     };
@@ -46,6 +49,9 @@ function Share() {
         dispatch(addProjectToSubmittedProjects(response.data.portfolio));
       }
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       toast.error(error.response.data.error);
       setIsLoading(false);
     }

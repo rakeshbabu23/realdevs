@@ -24,6 +24,9 @@ function ProjectCard() {
           console.error("No projects data found in response");
         }
       } catch (error) {
+        if (error.status === 401) {
+          window.location.href = "/";
+        }
         console.error("Failed to fetch user projects:", error);
         toast.error(error.response.data.error);
       }
@@ -39,6 +42,9 @@ function ProjectCard() {
       toast.success("Project deleted successfully!");
       setIsLoading(false);
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       console.error(error);
       setIsLoading(false);
       toast.error(error.response.data.error);

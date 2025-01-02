@@ -38,6 +38,9 @@ const useFetch = (selectedTab) => {
           );
         }
       } catch (error) {
+        if (error.status === 401) {
+          window.location.href = "/";
+        }
         toast.error(error.response.data.error);
       }
     };

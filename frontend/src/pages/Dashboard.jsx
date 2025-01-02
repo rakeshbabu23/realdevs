@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { LogOut } from "lucide-react";
 import { toast } from "react-toastify";
 import Portfolios from "./Portfolios";
@@ -8,18 +8,8 @@ import Trending from "./Trending";
 import { userLogout } from "../services/userService";
 import useTrending from "../hooks/useTrending";
 import useFetch from "../hooks/useFetch";
-import api from "../services/api";
-import {
-  setPortfolios,
-  setTrendingPortfolios,
-} from "../features/portfolios/portfolioSlice";
-import {
-  setprojects,
-  setTrendingProjects,
-} from "../features/projects/projectSlice";
 
 function Dashboard() {
-  const dispatch = useDispatch();
   const [selectedTab, setSelectedTab] = useState("portfolio");
   const [selectedFilter, setSelectedFilter] = useState("all");
   const portfolios = useSelector((state) => state.portfolio.portfolios);
@@ -92,8 +82,11 @@ function Dashboard() {
       await userLogout();
       window.location.href = "/";
       toast.success("Logged out successfully!");
-    } catch (e) {
-      toast.error(e.response.data.error || e.response.data.errors);
+    } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
+      toast.error(error.response.data.error);
     }
   };
   return (

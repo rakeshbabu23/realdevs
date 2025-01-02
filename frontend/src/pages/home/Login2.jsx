@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { setUser } from "../../features/user/userSlice";
 import api from "../../services/api";
 function LoginSignupFlow() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const inputRef = useRef(null);
   const [step, setStep] = useState(0);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -60,6 +62,9 @@ function LoginSignupFlow() {
       dispatch(setUser(response.data));
       navigate("/dashboard");
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       setIsLoading(false);
       console.log(error.response.data.error);
       toast.error(error.response.data.error);
@@ -73,7 +78,6 @@ function LoginSignupFlow() {
       dispatch(setUser(response.data));
       navigate("/dashboard");
     } catch (error) {
-      console.log("Error: " + error);
       const errorMessage =
         error.response?.data?.error ||
         error.response?.data?.errors ||
@@ -82,7 +86,21 @@ function LoginSignupFlow() {
       setIsLoading(false);
     }
   };
-
+  useEffect(() => {
+    // Focus the input field on component mount
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "1") {
@@ -163,7 +181,7 @@ function LoginSignupFlow() {
   };
 
   return (
-    <div className="flex flex-col items-center min-h-screen bg-slate-500 p-8">
+    <div className="flex flex-col items-center min-h-screen bg-green-500 p-8">
       <div className="max-sm:w-[100%]  md:w-[80%] h-[80vh]">
         {" "}
         {/* Set height to 80% of viewport height */}
@@ -183,7 +201,23 @@ function LoginSignupFlow() {
               <p>2. Signup</p>
             </div>
           </div>
-
+          {step < 1 && isMobile && (
+            <input
+              ref={inputRef}
+              type="text"
+              value={step}
+              onChange={(e) => setStep(e.target.value)}
+              placeholder="Press 1 or 2 to switch"
+              style={{
+                padding: "10px",
+                fontSize: "16px",
+                border: "1px solid #000",
+                borderRadius: "4px",
+                outline: "none",
+                backgroundColor: "#000",
+              }}
+            />
+          )}
           {/* Step 1: Username */}
           {authFlow === "signup" && step >= 1 && (
             <div className="bg-black text-white p-4 w-full">

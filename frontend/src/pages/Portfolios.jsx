@@ -30,6 +30,9 @@ function Portfolios() {
 
       dispatch(setLikedPortfolios(portfolio));
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       toast.error(error.response.data.error);
     }
   };
@@ -63,6 +66,9 @@ function Portfolios() {
       const portfolioId = portfolio._id;
       await api.post(`/portfolio/view/${portfolioId}`, {});
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       toast.error(error.response.data.error);
     }
   };

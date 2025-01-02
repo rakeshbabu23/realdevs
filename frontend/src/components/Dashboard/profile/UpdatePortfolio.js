@@ -24,6 +24,9 @@ const UploadPortfolio = ({ url, onClose }) => {
           dispatch(setUserPortfolio(response.data.portfolio));
         }
       } catch (error) {
+        if (error.status === 401) {
+          window.location.href = "/";
+        }
         console.error("Failed to fetch user portfolio:", error);
         toast.error(error.response.data.error);
       }
@@ -48,6 +51,9 @@ const UploadPortfolio = ({ url, onClose }) => {
       toast.success("Portfolio uploaded successfully!");
       setIsLoading(false);
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       console.error(error);
       setIsLoading(false);
       toast.error(error.response.data.error);
@@ -71,6 +77,9 @@ const UploadPortfolio = ({ url, onClose }) => {
       toast.success("Portfolio updated successfully!");
       setIsLoading(false);
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       console.error(error);
       setIsLoading(false);
       toast.error(error.response.data.error);
@@ -87,7 +96,9 @@ const UploadPortfolio = ({ url, onClose }) => {
             className="h-[200px] w-full"
           />
         ) : (
-          <Upload size={64} className="text-blue-400" />
+          <div className="h-[200px] w-full flex items-center justify-center">
+            <Upload size={64} className="text-blue-400" />
+          </div>
         )}
       </ImageContainer>
 

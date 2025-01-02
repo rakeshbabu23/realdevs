@@ -21,12 +21,15 @@ function Projects() {
   });
   const addLike = async (project) => {
     try {
-      const response = await api.post("/project/like", {
+       await api.post("/project/like", {
         projectId: project._id,
       });
 
       dispatch(setLikedProjects(project));
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       toast.error(error.response.data.error);
     }
   };
@@ -57,8 +60,11 @@ function Projects() {
     }
     try {
       const projectId = project._id;
-      const response = await api.post(`/project/view/${projectId}`, {});
+      await api.post(`/project/view/${projectId}`, {});
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       toast.error(error.response.data.error);
     }
   };

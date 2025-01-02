@@ -39,6 +39,9 @@ const UploadProject = ({ onClose }) => {
       setIsLoading(false);
       onClose();
     } catch (error) {
+      if (error.status === 401) {
+        window.location.href = "/";
+      }
       console.error(error);
       setIsLoading(false);
       toast.error(error.response.data.error);
