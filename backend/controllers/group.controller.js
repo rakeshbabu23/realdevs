@@ -7,7 +7,6 @@ const createGroup = async (req, res) => {
       .status(201)
       .json({ message: "Group created successfully", group });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
@@ -21,7 +20,6 @@ const userGroups = async (req, res) => {
       .status(200)
       .json({ message: "Retrieved user groups successfully", groups });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
@@ -34,7 +32,6 @@ const updateGroup = async (req, res) => {
       .status(200)
       .json({ message: "Group updated successfully", group });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
@@ -48,7 +45,6 @@ const getSubmittedPortfolios = async (req, res) => {
       portfolios,
     });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
@@ -64,7 +60,6 @@ const getSubmittedPortfoliosOfUser = async (req, res) => {
       portfolios,
     });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
@@ -78,7 +73,6 @@ const submitPortfolio = async (req, res) => {
       .status(201)
       .json({ message: "Portfolio submitted successfully", portfolio });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }

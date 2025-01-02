@@ -35,7 +35,7 @@ const validateSchema = (schema) => {
 
     if (validationResults.length > 0) {
       const errors = validationResults.map((res) => res.error).join(", ");
-      return res.status(400).json({ errors });
+      return res.status(400).json({ error: errors });
     }
 
     req.values = validatedValues;

@@ -7935,3 +7935,23 @@
 {"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:21:04.674Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:21:18.797Z"}
 {"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:21:45.706Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:31:20.168Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:32:22.768Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:32:22.775Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:32:22.780Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:32:22.783Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/project/user\",\"status\":\"304\",\"responseTime\":\"211.687\"}","timestamp":"2025-01-02T16:32:22.955Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/portfolio/trending\",\"status\":\"200\",\"responseTime\":\"440.010\"}","timestamp":"2025-01-02T16:32:23.208Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/portfolio?page=1&limit=12\",\"status\":\"200\",\"responseTime\":\"1387.167\"}","timestamp":"2025-01-02T16:32:24.139Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/group/user\",\"status\":\"304\",\"responseTime\":\"2918.406\"}","timestamp":"2025-01-02T16:32:25.625Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:32:54.996Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:33:05.473Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Connected to mongodb ","timestamp":"2025-01-02T16:33:27.764Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:33:59.647Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:33:59.656Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/portfolio/trending\",\"status\":\"304\",\"responseTime\":\"987.818\"}","timestamp":"2025-01-02T16:34:00.574Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/portfolio?page=1&limit=12\",\"status\":\"304\",\"responseTime\":\"1389.024\"}","timestamp":"2025-01-02T16:34:00.997Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:34:22.643Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"Gnerating access token for [object Object]","timestamp":"2025-01-02T16:34:22.652Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/portfolio/trending\",\"status\":\"304\",\"responseTime\":\"809.363\"}","timestamp":"2025-01-02T16:34:23.377Z"}
+{"level":"\u001b[32minfo\u001b[39m","message":"{\"method\":\"GET\",\"url\":\"/v1/portfolio?page=1&limit=12\",\"status\":\"304\",\"responseTime\":\"1161.730\"}","timestamp":"2025-01-02T16:34:23.738Z"}

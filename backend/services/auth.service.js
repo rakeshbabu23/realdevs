@@ -21,7 +21,6 @@ const customSignUp = async (reqInfo) => {
     });
     await newUser.save();
   } catch (error) {
-    console.log("Error creating user", error);
     throw createError(400, "Internal server error");
   }
 

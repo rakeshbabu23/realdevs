@@ -7,7 +7,6 @@ const addPortfolio = async (req, res) => {
       .status(201)
       .json({ message: "Portfolio created successfully", portfolio });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
@@ -21,7 +20,6 @@ const updatePortfolio = async (req, res) => {
       .status(200)
       .json({ message: "Portfolio updated successfully", portfolio });
   } catch (error) {
-    console.log("Error creating", error);
     if (error.status && error.message) {
       return res.status(error.status).json({ error: error.message });
     }
