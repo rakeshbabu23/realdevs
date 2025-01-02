@@ -23,7 +23,7 @@ app.use(compression());
 app.use(rateLimiter);
 app.use(
   cors({
-    origin: "https://realdevs-1.onrender.com",
+    origin: "https://realdevs.vercel.app/",
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization", "userId"],
     credentials: true,
