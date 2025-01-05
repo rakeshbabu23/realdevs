@@ -50,7 +50,7 @@ const Login = () => {
           initialValues={{ email: "", password: "" }}
           validationSchema={LoginSchema}
           onSubmit={(values, { setSubmitting }) => {
-            handleLogin();
+            handleLogin(values);
           }}
         >
           {({ isSubmitting }) => (

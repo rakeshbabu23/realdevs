@@ -26,9 +26,7 @@ const Signup = () => {
       const response = await api.post("/auth/signup", values);
       setIsLoading(false);
       dispatch(setUser(response.data));
-      // localStorage.setItem("accessToken", response.data.user.accessToken);
-      // localStorage.setItem("refreshToken", response.data.user.refreshToken);
-      // localStorage.setItem("userId", response.data.user._id);
+
       navigate("/dashboard");
     } catch (error) {
       const errorMessage =
@@ -39,6 +37,7 @@ const Signup = () => {
       setIsLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen bg-black flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-md w-full space-y-8">

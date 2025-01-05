@@ -13,7 +13,9 @@ import Profile from "./pages/profile/Profile";
 import Home from "./pages/group/Home";
 import Share from "./pages/share/Share";
 import LandingPage from "./pages/landing/LandingPage";
+import useWindowResize from "./hooks/useWindowResize";
 function App() {
+  const { isMobile } = useWindowResize();
   return (
     <>
       <ToastContainer
@@ -33,7 +35,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LandingPage />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login2 />} />
+          <Route path="/login" element={isMobile ? <Login /> : <Login2 />} />
           <Route path="/dashboard" element={<Layout />}>
             <Route index element={<Dashboard />} />
             <Route path="projects" element={<Dashboard />} />

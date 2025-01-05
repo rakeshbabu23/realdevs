@@ -17,66 +17,15 @@ function Dashboard() {
   const projects = useSelector((state) => state.project.projects);
   const projectsInfo = useSelector((state) => state.project);
   useTrending(selectedTab, selectedFilter);
-  const { page, setPage, limit, setLimit } = useFetch(selectedTab);
-  // const [page, setPage] = useState(1);
-  // const [limit, setLimit] = useState(12);
+  const {
+    projectPage,
+    portfolioPage,
+    setPortfolioPage,
+    setProjectPage,
+    limit,
+    setLimit,
+  } = useFetch(selectedTab);
 
-  // useEffect(() => {
-  //   const fetchAll = async () => {
-  //     try {
-  //       const response = await api.get(
-  //         `/${selectedTab}?page=${page}&limit=${limit}`
-  //       );
-  //       if (selectedTab == "portfolio") {
-  //         dispatch(
-  //           setPortfolios({
-  //             portfolios: response.data.portfolios,
-  //             totalPortfolios: response.data.totalPortfolios,
-  //             page: response.data.page,
-  //             limit: response.data.limit,
-  //             totalPages: response.data.totalPages,
-  //           })
-  //         );
-  //       } else {
-  //         dispatch(
-  //           setprojects({
-  //             projects: response.data.projects,
-  //             totalProjects: response.data.totalProjects,
-  //             page: response.data.page,
-  //             limit: response.data.limit,
-  //             totalPages: response.data.totalPages,
-  //           })
-  //         );
-  //       }
-  //     } catch (error) {
-  //
-  //       toast.error(error.response.data.error);
-  //     }
-  //   };
-
-  //   fetchAll();
-  // }, [selectedTab, dispatch, page]);
-  // useEffect(() => {
-  //   const fetchTrending = async () => {
-  //     try {
-  //       const response = await api.get(`/${selectedTab}/trending`);
-
-  //       if (selectedTab == "portfolio") {
-  //         dispatch(setTrendingPortfolios(response.data.portfolios));
-  //       } else {
-  //         dispatch(setTrendingProjects(response.data.projects));
-  //       }
-  //     } catch (error) {
-  //       if (error.status === 401) {
-  //         window.location.href = "/";
-  //       }
-  //
-  //       toast.error(error.response.data.error);
-  //     }
-  //   };
-
-  //   fetchTrending();
-  // }, [selectedFilter, selectedTab, dispatch]);
   const handleLogout = async () => {
     try {
       await userLogout();
@@ -100,7 +49,9 @@ function Dashboard() {
                 ? "text-purple-600 border-b-2 border-purple-600"
                 : "text-gray-600 hover:text-purple-600"
             }`}
-            onClick={() => setSelectedTab("portfolio")}
+            onClick={() => {
+              setSelectedTab("portfolio");
+            }}
           >
             Portfolios
           </button>
@@ -111,7 +62,9 @@ function Dashboard() {
                 ? "text-purple-600 border-b-2 border-purple-600"
                 : "text-gray-600 hover:text-purple-600"
             }`}
-            onClick={() => setSelectedTab("project")}
+            onClick={() => {
+              setSelectedTab("project");
+            }}
           >
             Projects
           </button>
@@ -157,7 +110,7 @@ function Dashboard() {
           projects &&
           projects.length > 0 && <Trending selectedTab={selectedTab} />}
       </div>
-      {selectedFilter !== "all" && selectedFilter !== "trending" && (
+      {selectedFilter === "all" && (
         <div className="py-2 flex flex-row justify-center items-center">
           {selectedTab === "portfolio" ? (
             <div className="flex flex-row justify-center items-center">
@@ -165,11 +118,11 @@ function Dashboard() {
                 <p
                   key={index}
                   className={` ${
-                    index + 1 === page
+                    index + 1 === portfolioPage
                       ? "bg-purple-600 text-white px-2 py-1 rounded-md"
                       : "text-purple-600 bg-black p-2"
                   }`}
-                  onClick={() => setPage(index + 1)}
+                  onClick={() => setPortfolioPage(index + 1)}
                 >
                   {index + 1}
                 </p>
@@ -177,15 +130,15 @@ function Dashboard() {
             </div>
           ) : (
             <div className="flex flex-row">
-              {Array.from({ length: projectsInfo.totalPages }, (_, index) => (
+              {Array.from({ length: portfoliosInfo.totalPages }, (_, index) => (
                 <p
                   key={index}
                   className={` ${
-                    index + 1 === page
-                      ? "bg-purple-600 text-white p-2"
-                      : "text-purple-600"
+                    index + 1 === projectPage
+                      ? "bg-purple-600 text-white px-2 py-1 rounded-md"
+                      : "text-purple-600 bg-black p-2"
                   }`}
-                  onClick={() => setPage(index + 1)}
+                  onClick={() => setProjectPage(index + 1)}
                 >
                   {index + 1}
                 </p>

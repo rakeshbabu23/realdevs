@@ -8,13 +8,16 @@ import axios from "axios";
 
 const useFetch = (selectedTab) => {
   const dispatch = useDispatch();
-  const [page, setPage] = useState(1);
+  const [portfolioPage, setPortfolioPage] = useState(1);
+  const [projectPage, setProjectPage] = useState(1);
   const [limit, setLimit] = useState(12);
   useEffect(() => {
     const fetchAll = async () => {
       try {
         const response = await api.get(
-          `/${selectedTab}?page=${page}&limit=${limit}`
+          `/${selectedTab}?page=${
+            selectedTab === "portfolio" ? portfolioPage : projectPage
+          }&limit=${limit}`
         );
         if (selectedTab === "portfolio") {
           dispatch(
@@ -46,8 +49,15 @@ const useFetch = (selectedTab) => {
     };
 
     fetchAll();
-  }, [selectedTab]);
-  return { page, setPage, limit, setLimit };
+  }, [selectedTab, portfolioPage, projectPage]);
+  return {
+    projectPage,
+    portfolioPage,
+    setPortfolioPage,
+    setProjectPage,
+    limit,
+    setLimit,
+  };
 };
 
 export default useFetch;
